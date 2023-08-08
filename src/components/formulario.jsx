@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { useState } from "react";
+import {obtenerCalculos, obtenerCostoImplementacion} from '../helper';
 
 const FormularioDiv = styled.div `
     display: flex;
@@ -21,6 +22,17 @@ const FormularioSelect = styled.select`
     -webkit-appearance: none;
     
 `;
+
+const FormularioTiempo = styled.select`
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #e1e1e1;
+    border-radius: 1rem;
+    -webkit-appearance: none;
+    
+`;
+
 
 const FormularioInput = styled.input`
     display: block;
@@ -108,16 +120,33 @@ const Formulario = () => {
         guardarError(false);
 
         //Verificar el tipo de licencias 
-
+        const tipoDeLicencia = licencia;
         //Verificar el tiempo de contrato
-
+        const tiempoDeContrato = parseInt(tiempo);
         //Verificar la cantidad de licencias y en que rango se encuentra
-
+        const cantidadDeLicencias = parseInt(cantidad);
         //Aplica o no implementacion
-
-        //total
-
-
+        const valorImplementacion = obtenerCostoImplementacion(implementacion);
+        console.log(valorImplementacion);
+        
+        //Realizando los calculos
+        const calculos = obtenerCalculos (tipoDeLicencia, tiempoDeContrato, cantidadDeLicencias);
+        console.log(calculos)
+        //Resumen de resultados
+        
+        //1 - Valor unitario de licencia
+        let valorUnitarioCliente = parseFloat (calculos).toFixed(2);
+        console.log(valorUnitarioCliente);
+        //2. Cantidad de licencias 
+        console.log(cantidadDeLicencias);
+        //3. Valor Mes
+        let valorMes = parseFloat (valorUnitarioCliente * cantidadDeLicencias).toFixed(2);
+        console.log(valorMes);
+        //4. Tiempo de contrato
+        console.log(tiempoDeContrato);
+        //5. Total contrato
+        let valorTotalContrato = parseFloat (valorMes * tiempoDeContrato).toFixed(2);
+        console.log(valorTotalContrato);
 
     }
     return ( 
@@ -136,7 +165,7 @@ const Formulario = () => {
                     value={licencia}
                     onChange={obtenerInformacion}
                 >
-                    <option value="">** Seleccione **</option>
+                    <option value="">** Seleccione el Tipo **</option>
                     <option value="starter">Starter</option>
                     <option value="business">Business</option>
                     <option value="enterprise">Enterprise</option>
@@ -144,16 +173,17 @@ const Formulario = () => {
             </FormularioDiv>
 
             <FormularioDiv>
-                <FormularioLabel >Tiempo de Contrato</FormularioLabel>
-                <FormularioInput
-                    type="number"
-                    min="1"
-                    max="36"
-                    placeholder="Ingresa el Tiempo"
+                <FormularioLabel >Tiempos del contrato</FormularioLabel>
+                <FormularioTiempo
                     name="tiempo"
                     value={tiempo}
                     onChange={obtenerInformacion}
-                />
+                >
+                    <option value="">** Seleccione el Tiempo **</option>
+                    <option value="12">12 Meses</option>
+                    <option value="24">24 Meses</option>
+                    <option value="36">36 Meses</option>
+                </FormularioTiempo>
             </FormularioDiv>
 
             <FormularioDiv>
