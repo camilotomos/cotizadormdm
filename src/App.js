@@ -1,6 +1,9 @@
+import { useState } from "react";
 import Header from "./components/Header";
 import styled from "@emotion/styled";
-import Formulario from "./components/formulario";
+import Formulario from "./components/Formulario"
+import Resumen from "./components/Resumen";
+
 
 
 const Contenedor = styled.div`
@@ -23,6 +26,23 @@ const ContenedorFormulario = styled.div`
 `;
 
 function App() {
+
+  const [resumen, guardarResumen] = useState ({
+    datos:{
+    tipoDeLicencia: '',
+    tiempoDeContrato: '',
+    cantidadDeLicencias: '',
+    valorUnitarioCliente: '',
+    valorMes: '',
+    valorTotalContrato: '',
+    valorImplementacion: '',
+    totalContratoConImplementacion: '',
+    }
+  });
+
+  //Extrar la inforamcion para resumen
+  const {datos} = resumen;
+
   return (
   <Contenedor>
     <Header 
@@ -30,7 +50,14 @@ function App() {
     />
 
     <ContenedorFormulario>
-      <Formulario />
+      <Formulario
+        guardarResumen={guardarResumen}
+      />
+
+      <Resumen 
+        datos = {datos}
+      />
+
     </ContenedorFormulario>
 
   </Contenedor>

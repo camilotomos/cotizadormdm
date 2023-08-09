@@ -81,7 +81,7 @@ const Error = styled.div`
      font-weight: bold;
 `;
 
-const Formulario = () => {
+const Formulario = ({guardarResumen}) => {
 
     //Crear las variables del state
     const [datos, guardarDatos] = useState({
@@ -126,27 +126,34 @@ const Formulario = () => {
         //Verificar la cantidad de licencias y en que rango se encuentra
         const cantidadDeLicencias = parseInt(cantidad);
         //Aplica o no implementacion
-        const valorImplementacion = obtenerCostoImplementacion(implementacion);
-        console.log(valorImplementacion);
-        
+        const valorImplementacion = (obtenerCostoImplementacion(implementacion));
         //Realizando los calculos
         const calculos = obtenerCalculos (tipoDeLicencia, tiempoDeContrato, cantidadDeLicencias);
-        console.log(calculos)
+  
+
         //Resumen de resultados
-        
         //1 - Valor unitario de licencia
-        let valorUnitarioCliente = parseFloat (calculos).toFixed(2);
-        console.log(valorUnitarioCliente);
-        //2. Cantidad de licencias 
-        console.log(cantidadDeLicencias);
-        //3. Valor Mes
+        let valorUnitarioCliente = parseFloat ((calculos));
+    
         let valorMes = parseFloat (valorUnitarioCliente * cantidadDeLicencias).toFixed(2);
-        console.log(valorMes);
-        //4. Tiempo de contrato
-        console.log(tiempoDeContrato);
-        //5. Total contrato
+
         let valorTotalContrato = parseFloat (valorMes * tiempoDeContrato).toFixed(2);
         console.log(valorTotalContrato);
+        let totalContratoConImplementacion = parseFloat (valorTotalContrato) + parseFloat(valorImplementacion);
+        console.log(totalContratoConImplementacion);
+        //Guardo todos los datos base y calculados para mostrar en resumen
+        guardarResumen({
+            datos: {
+            tipoDeLicencia: tipoDeLicencia,
+            tiempoDeContrato: tiempoDeContrato,
+            cantidadDeLicencias: cantidadDeLicencias,
+            valorUnitarioCliente: valorUnitarioCliente,
+            valorMes: valorMes,
+            valorTotalContrato: valorTotalContrato,
+            valorImplementacion: valorImplementacion,
+            totalContratoConImplementacion: totalContratoConImplementacion
+            }
+        });
 
     }
     return ( 

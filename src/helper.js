@@ -246,5 +246,5 @@ export function obtenerCalculos(tipoDeLicencia, tiempoDeContrato, cantidadDeLice
 
 //Calcular el costo de la implementacion
 export function obtenerCostoImplementacion (implementacion){
-    return (implementacion === 'si') ? 120 : 0;
+    return (implementacion === 'si') ? '120.00' : '0.00';
 }
