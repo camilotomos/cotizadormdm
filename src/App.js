@@ -1,8 +1,9 @@
 import { useState } from "react";
 import Header from "./components/Header";
 import styled from "@emotion/styled";
-import Formulario from "./components/Formulario"
+import Formulario from "./components/Formulario";
 import Resumen from "./components/Resumen";
+import Spinner from "./components/Spinner";
 
 
 
@@ -40,6 +41,9 @@ function App() {
     }
   });
 
+  //Cargar el Spinner
+  const [cargando, guardarCargando] = useState (false);
+
   //Extrar la inforamcion para resumen
   const {datos} = resumen;
 
@@ -52,7 +56,11 @@ function App() {
     <ContenedorFormulario>
       <Formulario
         guardarResumen={guardarResumen}
+        guardarCargando = {guardarCargando}
       />
+
+      {cargando ? <Spinner /> : null}
+      
 
       <Resumen 
         datos = {datos}

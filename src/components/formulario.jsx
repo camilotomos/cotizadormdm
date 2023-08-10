@@ -81,7 +81,7 @@ const Error = styled.div`
      font-weight: bold;
 `;
 
-const Formulario = ({guardarResumen}) => {
+const Formulario = ({guardarResumen, guardarCargando}) => {
 
     //Crear las variables del state
     const [datos, guardarDatos] = useState({
@@ -138,22 +138,31 @@ const Formulario = ({guardarResumen}) => {
         let valorMes = parseFloat (valorUnitarioCliente * cantidadDeLicencias).toFixed(2);
 
         let valorTotalContrato = parseFloat (valorMes * tiempoDeContrato).toFixed(2);
-        console.log(valorTotalContrato);
+     
         let totalContratoConImplementacion = parseFloat (valorTotalContrato) + parseFloat(valorImplementacion);
-        console.log(totalContratoConImplementacion);
-        //Guardo todos los datos base y calculados para mostrar en resumen
-        guardarResumen({
-            datos: {
-            tipoDeLicencia: tipoDeLicencia,
-            tiempoDeContrato: tiempoDeContrato,
-            cantidadDeLicencias: cantidadDeLicencias,
-            valorUnitarioCliente: valorUnitarioCliente,
-            valorMes: valorMes,
-            valorTotalContrato: valorTotalContrato,
-            valorImplementacion: valorImplementacion,
-            totalContratoConImplementacion: totalContratoConImplementacion
-            }
-        });
+
+
+        guardarCargando(true);
+        setTimeout(() => {
+            
+            guardarCargando(false);
+
+            //Guardo todos los datos base y calculados para mostrar en resumen
+            guardarResumen({
+                datos: {
+                tipoDeLicencia: tipoDeLicencia,
+                tiempoDeContrato: tiempoDeContrato,
+                cantidadDeLicencias: cantidadDeLicencias,
+                valorUnitarioCliente: valorUnitarioCliente,
+                valorMes: valorMes,
+                valorTotalContrato: valorTotalContrato,
+                valorImplementacion: valorImplementacion,
+                totalContratoConImplementacion: totalContratoConImplementacion
+                }
+            });
+
+        }, 3000);
+
 
     }
     return ( 

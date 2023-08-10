@@ -238,6 +238,126 @@ export function obtenerCalculos(tipoDeLicencia, tiempoDeContrato, cantidadDeLice
         return valorCliente;
     }
 
+    
+
+
+    //ENTERPRISE para 12 meses en rangos
+    
+    //ENTERPRISE - Rango de 1 a 50 
+    if (tipoDeLicencia === "enterprise" && tiempoDeContrato === 12 && cantidadDeLicencias > 0 && cantidadDeLicencias <= 50)
+    {
+        costo = 2.40;
+        margen = 40/100;
+        valorCliente = (costo/(1-margen)).toFixed(2);
+        return valorCliente;
+    }
+
+    //Enterprise - Rango de 51 a 100 
+    else if (tipoDeLicencia === "enterprise" && tiempoDeContrato === 12 && cantidadDeLicencias > 50 && cantidadDeLicencias <= 100)
+    {
+        costo = 2.40;
+        margen = 39/100;
+        valorCliente = (costo/(1-margen)).toFixed(2);
+        return valorCliente;
+    }
+
+    //Enterprise - Rango de 101 a 500 
+    else if (tipoDeLicencia === "enterprise" && tiempoDeContrato === 12 && cantidadDeLicencias > 100 && cantidadDeLicencias <= 500)
+    {
+        costo = 2.40;
+        margen = 37/100;
+        valorCliente = (costo/(1-margen)).toFixed(2);
+        return valorCliente;
+    }
+
+    //Enterprise - Rango más de 500 
+    else if(tipoDeLicencia === "enterprise" && tiempoDeContrato === 12 && cantidadDeLicencias > 500)
+    {
+        costo = 2.40;
+        margen = 35/100;
+        valorCliente = (costo/(1-margen)).toFixed(2);
+        return valorCliente;
+    }
+
+
+    //ENTERPRISE para 24 meses en rangos
+    
+    //Enterprise - Rango de 1 a 50 
+    if (tipoDeLicencia === "enterprise" && tiempoDeContrato === 24 && cantidadDeLicencias > 0 && cantidadDeLicencias <= 50)
+    {
+        costo = 2.40;
+        margen = 39/100;
+        valorCliente = (costo/(1-margen)).toFixed(2);
+        return valorCliente;
+    }
+
+    //Enterprise - Rango de 51 a 100 
+    else if (tipoDeLicencia === "enterprise" && tiempoDeContrato === 24 && cantidadDeLicencias > 50 && cantidadDeLicencias <= 100)
+    {
+        costo = 2.40;
+        margen = 37/100;
+        valorCliente = (costo/(1-margen)).toFixed(2);
+        return valorCliente;
+    }
+
+    //Enterprise - Rango de 101 a 500 
+    else if (tipoDeLicencia === "enterprise" && tiempoDeContrato === 24 && cantidadDeLicencias > 100 && cantidadDeLicencias <= 500)
+    {
+        costo = 2.40;
+        margen = 35/100;
+        valorCliente = (costo/(1-margen)).toFixed(2);
+        return valorCliente;
+    }
+
+    //Enterprise - Rango más de 500 
+    else if(tipoDeLicencia === "enterprise" && tiempoDeContrato === 24 && cantidadDeLicencias > 500)
+    {
+        costo = 2.40;
+        margen = 33/100;
+        valorCliente = (costo/(1-margen)).toFixed(2);
+        return valorCliente;
+    }
+
+
+    //ENTERPRISE para 36 meses en rangos
+    
+    //Enterprise - Rango de 1 a 50 
+    if (tipoDeLicencia === "enterprise" && tiempoDeContrato === 36 && cantidadDeLicencias > 0 && cantidadDeLicencias <= 50)
+    {
+        costo = 2.40;
+        margen = 37/100;
+        valorCliente = (costo/(1-margen)).toFixed(2);
+        return valorCliente;
+    }
+
+    //Enterprise - Rango de 51 a 100 
+    else if (tipoDeLicencia === "enterprise" && tiempoDeContrato === 36 && cantidadDeLicencias > 50 && cantidadDeLicencias <= 100)
+    {
+        costo = 2.40;
+        margen = 35/100;
+        valorCliente = (costo/(1-margen)).toFixed(2);
+        return valorCliente;
+    }
+
+    //Enterprise - Rango de 101 a 500 
+    else if (tipoDeLicencia === "enterprise" && tiempoDeContrato === 36 && cantidadDeLicencias > 100 && cantidadDeLicencias <= 500)
+    {
+        costo = 2.40;
+        margen = 32/100;
+        valorCliente = (costo/(1-margen)).toFixed(2);
+        return valorCliente;
+    }
+
+    //Enterprise - Rango más de 500 
+    else if(tipoDeLicencia === "enterprise" && tiempoDeContrato === 36 && cantidadDeLicencias > 500)
+    {
+        costo = 2.40;
+        margen = 30/100;
+        valorCliente = (costo/(1-margen)).toFixed(2);
+        return valorCliente;
+    }
+
+
     else{
         return 0;
     }
